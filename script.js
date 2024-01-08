@@ -1,3 +1,74 @@
+/*ANIME.JS */
+
+/*PROFILE SECTION */
+
+document.addEventListener("DOMContentLoaded", function () {
+  const profileAnimation = anime({
+    targets: "#profile",
+    opacity: [0, 1],
+    translateY: [-150, 0],
+    duration: 700,
+    easing: "easeInOutQuad",
+  });
+});
+
+/*ABOUT SECTIONS  */
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Select the elements to be animated
+  var aboutAnimation = document.querySelector(".about-animation");
+
+  // Function to check if an element is in the viewport
+  const isInViewport = (elem) => {
+    const bounding = elem.getBoundingClientRect();
+    return (
+      bounding.top >= 0 &&
+      bounding.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight)
+    );
+  };
+
+  // Stagger the appearance of the text container in the "About" section
+  const aboutSection = document.getElementById("about");
+  const textContainer = document.querySelector(".about-details-container");
+
+  window.addEventListener("scroll", function () {
+    if (isInViewport(aboutSection)) {
+      anime({
+        targets: textContainer,
+        opacity: [0, 1],
+        translateY: [100, 0],
+        duration: 700,
+        easing: "easeInOutQuad",
+        delay: anime.stagger(100),
+      });
+    }
+  });
+  // Function to handle the scroll event
+  function handleScroll() {
+    if (isInViewport(aboutAnimation)) {
+      // Start the anime.js stagger animation
+      anime({
+        targets: ".about-animation .details-container",
+        translateY: [-100, 0],
+        opacity: [0, 1],
+        easing: "easeInOutQuad",
+        duration: 700,
+        delay: anime.stagger(100),
+      });
+
+      // Remove the scroll event listener after animation is triggered to avoid unnecessary calls
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }
+
+  // Attach the scroll event listener
+  window.addEventListener("scroll", handleScroll);
+
+  // Trigger the animation once on page load (in case the "About Me" section is already in the viewport)
+  handleScroll();
+});
+
 function toggleMenu() {
   const menu = document.querySelector(".menu-links");
   const icon = document.querySelector(".hamburger-icon");
