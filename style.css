@@ -434,9 +434,15 @@ footer p {
 #projects .details-container:hover {
   animation: glow-purple 1s ease-in-out infinite alternate;
 }
+
 #about .details-container {
   animation: glow-purple 9999999999999s;
 }
+
+#experience .details-container {
+  animation: glow-purple 9999999999999s;
+}
+
 .about-pic {
   animation: glow-pink 9999999999999s;
 }
@@ -747,16 +753,16 @@ input:checked + label .description {
 }
 
 .project-card[for="c1"] {
-  background-image: url("./images/img-1.jpg");
+  background-image: url("./images/design-Homepage.png");
 }
 .project-card[for="c2"] {
-  background-image: url("./images/img-2.jpg");
+  background-image: url("./images/design-namecard.png");
 }
 .project-card[for="c3"] {
-  background-image: url("./images/img-3.jpg");
+  background-image: url("./images/design-typography.png");
 }
 .project-card[for="c4"] {
-  background-image: url("./images/img-4.jpg");
+  background-image: url("./images/design-icecream.jpg");
 }
 .project-card[for="c5"] {
   background-image: url("./images/img-4.jpg");
@@ -766,19 +772,19 @@ input:checked + label .description {
 }
 
 .project-card[for="d1"] {
-  background-image: url("./images/img-1.jpg");
+  background-image: url("./images/code-travel.png");
 }
 .project-card[for="d2"] {
-  background-image: url("./images/img-2.jpg");
+  background-image: url("./images/code-movie.png");
 }
 .project-card[for="d3"] {
-  background-image: url("./images/img-3.jpg");
+  background-image: url("./images/code-supermarket.png");
 }
 .project-card[for="d4"] {
-  background-image: url("./images/img-4.jpg");
+  background-image: url("./images/code-weatherApp.png");
 }
 .project-card[for="d5"] {
-  background-image: url("./images/img-4.jpg");
+  background-image: url("./images/code-billCalculator.png");
 }
 .project-card[for="d6"] {
   background-image: url("./images/img-4.jpg");

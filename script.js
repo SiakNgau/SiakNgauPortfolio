@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const profileAnimation = anime({
     targets: "#profile",
     opacity: [0, 1],
-    translateY: [-150, 0],
-    duration: 700,
+    translateY: [-200, 0],
+    duration: 1200,
     easing: "easeInOutQuad",
   });
 });
