@@ -240,19 +240,195 @@ darkModeToggle.addEventListener("click", () => {
 
 /* BUTTON EFFECT */
 
-const root = document.querySelector(":root");
-const button = document.querySelector(".button");
+// const root = document.querySelector(":root");
+// const button = document.querySelector(".button");
 
-button.addEventListener("mousemove", (e) => {
-  const rect = e.target.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
+// button.addEventListener("mousemove", (e) => {
+//   const rect = e.target.getBoundingClientRect();
+//   const x = ((e.clientX - rect.left) / rect.width) * 100;
+//   const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-  root.style.setProperty("--gradient-pos-x", `${x}%`);
-  root.style.setProperty("--gradient-pos-y", `${y}%`);
+//   root.style.setProperty("--gradient-pos-x", `${x}%`);
+//   root.style.setProperty("--gradient-pos-y", `${y}%`);
+// });
+
+// button.addEventListener("mouseout", () => {
+//   root.style.setProperty("--gradient-pos-x", `50%`);
+//   root.style.setProperty("--gradient-pos-y", `50%`);
+// });
+
+// Select all radio buttons
+const radios = document.querySelectorAll('input[type="radio"]');
+let currentRadioId = null;
+
+// Function to handle radio button change
+function handleRadioChange(event) {
+  const radioButton = event.target;
+  currentRadioId = radioButton.id;
+
+  // Determine which projectInfoContainer to update based on radio button id
+  let projectTitle, projectDesc;
+  if (radioButton.name === "slide-c") {
+    projectTitle = document.querySelector("#projectTitle1");
+    projectDesc = document.querySelector("#projectDesc1");
+  } else if (radioButton.name === "slide-d") {
+    projectTitle = document.querySelector("#projectTitle2");
+    projectDesc = document.querySelector("#projectDesc2");
+  }
+
+  // Assign specific titles and descriptions to each radio button
+  if (projectTitle && projectDesc) {
+    if (radioButton.name === "slide-c") {
+      switch (
+        radioButton.id // Use id instead of name
+      ) {
+        case "c1":
+          projectTitle.innerHTML = "<br>E-Commerce Website";
+          projectDesc.innerHTML =
+            "<br>Made using Adobe XD,<br>a seamless platform that showcases different shoes,<br>to make online shopping experience enjoyable and efficient.<br>The aesthetic appeal is crucial in attracting customers.<br>From color schemes to typography,<br>every element was carefully chosen to resonate with the<br>brand identity and create a cohesive visual experience.<br><br><br>Click <a href='https://xd.adobe.com/view/a5d57b80-5bc9-4473-896f-338d3055b061-f086/?fullscreen' style='color: #ff7750'>here</a> to view the prototype.";
+          break;
+        case "c2":
+          projectTitle.innerHTML = "<br>Ice-cream shop namecard";
+          projectDesc.innerHTML =
+            "<br>Made using Adobe Illustrator,<br>the namecard is designed to be simple and minimalistic.<br>The color scheme is inspired by the colors of ice-cream.";
+          break;
+        case "c3":
+          projectTitle.innerHTML = "<br>Creating my own font";
+          projectDesc.innerHTML =
+            "<br>Made using Adobe illustrator,<br>Underwater / Coral theme font ";
+          break;
+        case "c4":
+          projectTitle.innerHTML = "<br>Fitness / Tracker App";
+          projectDesc.innerHTML =
+            "<br>Made with Adobe XD,<br>an app that helps users to track their fitness progress.<br>It is designed to be simple and easy to use.<br><br><br>Click <a href='https://xd.adobe.com/view/0c07e591-a95f-4515-97fc-a5bc374f1fcb-5954/' style='color: #ff7750'>here</a> to view the prototype.";
+          break;
+        case "c5":
+          projectTitle.innerHTML = "<br>Online Toy Store";
+          projectDesc.innerHTML =
+            "<br>Made using Adobe XD,<br>an online toy store that sells toys for kids<br>from the age of 3 to 12.<br><br><br>Click <a href='https://xd.adobe.com/view/9dd9a964-3a29-4e85-a873-b01699b55409-c88a/?fullscreen' style='color: #ff7750'>here</a> to view the prototype.";
+          break;
+        case "c6":
+          projectTitle.innerHTML = "<br>Playing with typography";
+          projectDesc.innerHTML =
+            "<br>using text to make shapes and turning them into food";
+          break;
+      }
+    } else if (radioButton.name === "slide-d") {
+      switch (radioButton.id) {
+        case "d1":
+          projectTitle.innerHTML = "<br>Travel / Tourism Website";
+          projectDesc.innerHTML =
+            "<br>Made using HTML, CSS, Javascript<br>responsive travel website showcasing different countries<br>and the different activities/attractions to visit.";
+          break;
+        case "d2":
+          projectTitle.innerHTML = "<br>Movie Website";
+          projectDesc.innerHTML =
+            "<br>Rotten Potatoes, a movie website crafted with<br>NetBeans and XAMPP,<br>prioritizing practicality over aesthetics,<br>this project seamlessly blends PHP, CSS, HTML, and MySQL<br>to deliver a straightforward yet effective movie-centric experience.";
+          break;
+        case "d3":
+          projectTitle.innerHTML = "<br>Supermarket Website";
+          projectDesc.innerHTML =
+            "<br>SuperMarket is a dynamic supermarket website designed to<br>streamline the grocery shopping experience for users.<br>Crafted using PHP, HTML, and CSS,<br>this platform emphasizes user-friendly navigation<br>and a visually appealing interface.";
+          break;
+        case "d4":
+          projectTitle.innerHTML = "<br>Weather App";
+          projectDesc.innerHTML =
+            "<br>Made with Java,<br>using information from an official weather API<br>to display the weather of a specific location.";
+          break;
+        case "d5":
+          projectTitle.innerHTML = "<br>Bill Calculator App";
+          projectDesc.innerHTML =
+            "<br>Made with Java,<br>an app that calculates the total bill of a restaurant.<br>It also allows users to split the bill<br>and calculate service and GST charges.<br>";
+          ``;
+          break;
+        case "d6":
+          projectTitle.innerHTML = "<br>Portfolio Website";
+          projectDesc.innerHTML =
+            "<br>Made with HTML, CSS, Javascript<br>Portfolio website to showcase my projects and skills.<br>Consists of a light and dark mode.<br>";
+          break;
+      }
+    }
+  }
+}
+
+// Add event listener to each radio button
+radios.forEach((radio) => radio.addEventListener("change", handleRadioChange));
+
+// MODAL
+
+// Get the modal and the modal content
+var modal = document.getElementById("myModal");
+var modalContent = document.getElementById("modal-content");
+
+// Get the "More Info" links
+var moreInfoLinks = document.querySelectorAll(".more-info");
+
+// Add event listener to each "More Info" link
+// Add event listener to each "More Info" link
+moreInfoLinks.forEach((link) => {
+  link.addEventListener("click", function (event) {
+    // Prevent the default action
+    event.preventDefault();
+
+    // Show the modal
+    modal.style.display = "block";
+
+    // Clear previous images
+    modalContent.innerHTML = "";
+
+    // Get the images corresponding to the current radio ID
+    // This assumes that the images are stored in an object called images
+    var images = {
+      c1: ["images/xd hifi.png", "images/xd lofi.png"], // replace with your actual image URLs
+      c2: ["images/design-namecard.png", "images/NamecardSketch2.png"], // replace with your actual image URLs
+      c3: ["images/design-typography.png"], // replace with your actual image URLs
+      c4: ["images/lofi-bananaza.png", "images/bababa.png"], // replace with your actual image URLs
+      c5: ["images/HOME.png", "images/Shop Boys.png", "images/Our Story.png"], // replace with your actual image URLs
+      c6: ["images/design-icecream.jpg"], // replace with your actual image URLs
+      d1: ["images/wx.mp4"], // replace with your actual image URLs
+      d2: ["images/movie.mp4"],
+      d3: ["images/supermarket.mp4"],
+      d4: ["images/code-weatherApp.png"],
+      d5: ["images/code-billCalculator.png"],
+      d6: ["images/light-portfolio.png", "images/dark-porfolio.png"],
+    };
+    var radioImages = images[currentRadioId];
+
+    // Add the images or videos to the modal content
+    radioImages.forEach((media) => {
+      if (media.endsWith(".mp4")) {
+        // Create a video element for .mp4 files
+        var video = document.createElement("video");
+        video.src = media;
+        video.autoplay = true;
+        video.loop = true;
+        video.muted = true;
+        video.style.width = "100%";
+        video.style.height = "auto";
+        modalContent.appendChild(video);
+      } else {
+        // Create an img element for other files
+        var img = document.createElement("img");
+        img.src = media;
+        img.style.width = "100%";
+        img.style.height = "auto";
+        modalContent.appendChild(img);
+      }
+    });
+  });
 });
 
-button.addEventListener("mouseout", () => {
-  root.style.setProperty("--gradient-pos-x", `50%`);
-  root.style.setProperty("--gradient-pos-y", `50%`);
-});
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
